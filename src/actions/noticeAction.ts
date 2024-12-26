@@ -26,10 +26,13 @@ export async function getNotices() {
   try {
     // Fetch all notices
     const snapshot = await db.collection("notices").get();
-    const notices = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    const notices = snapshot.docs.map((doc) => {
+      const data = doc.data();
+      data.id = doc.id;
+      data.createdAt = data?.createdAt.toDate();
+      data.updatedAt = data?.updatedAt.toDate();
+      return data;
+    });
 
     return notices;
   } catch (error) {

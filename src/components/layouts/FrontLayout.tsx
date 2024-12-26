@@ -13,8 +13,8 @@ export default function FrontLayout({
             <div className="flex items-center">
               <Link href="/" className="flex-shrink-0">
                 <img
-                  className="h-8 w-8"
-                  src="/placeholder.svg?height=32&width=32"
+                  className="h-8 w-12"
+                  src="https://manarat.ac.bd/wp-content/uploads/2021/02/miu-logo.jpeg"
                   alt="Logo"
                 />
               </Link>
@@ -39,16 +39,10 @@ export default function FrontLayout({
                     Events
                   </Link>
                   <Link
-                    href="/news"
+                    href="/notices"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    News
-                  </Link>
-                  <Link
-                    href="/careers"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Careers
+                    Notices
                   </Link>
                 </div>
               </div>
