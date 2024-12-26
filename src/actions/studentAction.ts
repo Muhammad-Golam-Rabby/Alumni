@@ -30,10 +30,13 @@ export async function getStudents() {
   try {
     // Fetch all students
     const snapshot = await db.collection("students").get();
-    const students = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    const students = snapshot.docs.map((doc) => {
+      const data = doc.data();
+      data.id = doc.id;
+      data.createdAt = data?.createdAt?.toDate();
+      data.updatedAt = data?.updatedAt?.toDate();
+      return data;
+    });
 
     // Fetch corresponding user data for each student
     const usersPromises = students.map(async (student: any) => {
@@ -41,9 +44,13 @@ export async function getStudents() {
         .collection("users")
         .doc(student.userID)
         .get();
-      return userSnapshot.exists
-        ? { ...student, ...userSnapshot.data() }
-        : { ...student };
+
+      const user = userSnapshot.data();
+
+      delete user?.createdAt;
+      delete user?.updatedAt;
+
+      return userSnapshot.exists ? { ...student, ...user } : { ...student };
     });
 
     // Wait for all user data to be fetched
