@@ -11,7 +11,7 @@ export async function getNotice(noticeID: string) {
       return null;
     }
 
-    const data = snapshot.data();
+    const data: any = snapshot.data();
     data.id = snapshot.id;
     data.createdAt = data?.createdAt.toDate();
     data.updatedAt = data?.updatedAt.toDate();

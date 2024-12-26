@@ -11,12 +11,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { convertTo12Hour } from "@/helpers/converter";
-import { Event } from "@/interfaces/EventInterfaces";
 import { format } from "date-fns";
 import Link from "next/link";
 
 export default async function page() {
-  const events: Event[] = await getEvents();
+  const events: any[] = await getEvents();
 
   console.log(events);
 

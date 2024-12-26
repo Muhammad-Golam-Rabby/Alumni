@@ -10,7 +10,7 @@ export default async function page({
   params: Promise<{ studentID: string }>;
 }) {
   const studentID = (await params).studentID;
-  const student: Student = await getStudent(studentID);
+  const student: any = await getStudent(studentID);
 
   return (
     <div className="space-y-5">

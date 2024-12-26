@@ -43,11 +43,6 @@ export function AdminSidebar() {
       url: "/admin/notices",
       icon: ClipboardMinusIcon,
     },
-    {
-      title: "Testimonials",
-      url: "/admin/testimonials",
-      icon: CalendarDaysIcon,
-    },
   ];
 
   return (
