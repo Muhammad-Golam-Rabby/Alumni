@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import {
   CalendarDaysIcon,
+  ClipboardMinusIcon,
   GraduationCapIcon,
   LayoutDashboardIcon,
 } from "lucide-react";
@@ -31,6 +32,16 @@ export function AdminSidebar() {
     {
       title: "Events",
       url: "/admin/events",
+      icon: CalendarDaysIcon,
+    },
+    {
+      title: "Notices",
+      url: "/admin/notices",
+      icon: ClipboardMinusIcon,
+    },
+    {
+      title: "Testimonials",
+      url: "/admin/testimonials",
       icon: CalendarDaysIcon,
     },
   ];
