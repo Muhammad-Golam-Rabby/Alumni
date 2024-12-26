@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Sidebar,
   SidebarContent,
@@ -16,6 +18,8 @@ import {
   LayoutDashboardIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import { signOut } from "next-auth/react";
 
 export function AdminSidebar() {
   const items = [
@@ -67,6 +71,15 @@ export function AdminSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <div className="p-2">
+        <Button
+          onClick={() => signOut()}
+          variant={"destructive"}
+          className="w-full"
+        >
+          Logout
+        </Button>
+      </div>
       <SidebarFooter />
     </Sidebar>
   );
