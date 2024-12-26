@@ -15,7 +15,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-
+import { signIn } from "next-auth/react";
 const formSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
@@ -30,12 +30,20 @@ export default function LoginForm() {
     defaultValues: {
       email: "",
       password: "",
-      type: "student",
+      type: "admin",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
+    const res = await signIn("credentials", {
+      email: values.email,
+      password: values.password,
+      type: values.type,
+      callbackUrl: values.type === "admin" ? "/admin" : "/student",
+    });
+
+    console.log(res);
   };
 
   return (

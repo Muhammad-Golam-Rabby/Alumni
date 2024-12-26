@@ -11,23 +11,26 @@ export default {
     async jwt({ token, user, account, profile, isNewUser }: any) {
       if (user) {
         token.id = user.id;
-        token.vendor = user.vendor;
+        token.role = user.role;
       }
       return token;
     },
     async session({ session, token, user }: any) {
       session.user.id = token.id;
-      session.vendor = token.vendor;
+      session.user.role = token.role;
       return session;
     },
   },
   providers: [
     Credentials({
       credentials: {
-        phone: {},
+        email: {},
         password: {},
+        type: {},
       },
       authorize: async (credentials) => {
+        console.log(credentials, "CREDENTIALS");
+
         console.log(credentials, process.env.NEXT_APP_API_URL, "CREDENTIALS");
 
         const res = await fetch(`${process.env.NEXT_APP_API_URL}/auth/login`, {
@@ -37,11 +40,11 @@ export default {
           },
           body: JSON.stringify(credentials),
         });
-        const { success, message, data } = await res.json();
-        console.log(message, data, "DATA");
+        const { success, msg, result } = await res.json();
+        console.log(msg, result, "DATA");
 
         if (success) {
-          return data;
+          return result;
         } else {
           return null;
         }
