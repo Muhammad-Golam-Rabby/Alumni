@@ -1,6 +1,6 @@
 import { getStudent } from "@/actions/studentAction";
 import GoBackBtn from "@/components/GoBackBtn";
-import StudentActionCard from "@/components/students/StudentActionCard";
+import StudentActionCard from "@/components/actionCards/StudentActionCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Student } from "@/interfaces/StudentInterfaces";

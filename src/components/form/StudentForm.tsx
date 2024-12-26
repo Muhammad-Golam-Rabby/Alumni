@@ -45,7 +45,7 @@ const formSchema = z.object({
   about: z.string().min(1),
 });
 
-export default function StudentForm({ student }: { student: Student }) {
+export default function StudentForm({ student }: { student?: Student }) {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
